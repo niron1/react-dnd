@@ -147,12 +147,16 @@ export default class HTML5Backend implements Backend {
 		if (!target.addEventListener) {
 			return
 		}
-		target.addEventListener('dragstart', this
-			.handleTopDragStart as EventListener)
+		target.addEventListener(
+			'dragstart',
+			this.handleTopDragStart as EventListener,
+		)
 		target.addEventListener('dragstart', this.handleTopDragStartCapture, true)
 		target.addEventListener('dragend', this.handleTopDragEndCapture, true)
-		target.addEventListener('dragenter', this
-			.handleTopDragEnter as EventListener)
+		target.addEventListener(
+			'dragenter',
+			this.handleTopDragEnter as EventListener,
+		)
 		target.addEventListener(
 			'dragenter',
 			this.handleTopDragEnterCapture as EventListener,
@@ -185,8 +189,10 @@ export default class HTML5Backend implements Backend {
 			true,
 		)
 		target.removeEventListener('dragend', this.handleTopDragEndCapture, true)
-		target.removeEventListener('dragenter', this
-			.handleTopDragEnter as EventListener)
+		target.removeEventListener(
+			'dragenter',
+			this.handleTopDragEnter as EventListener,
+		)
 		target.removeEventListener(
 			'dragenter',
 			this.handleTopDragEnterCapture as EventListener,
@@ -197,8 +203,10 @@ export default class HTML5Backend implements Backend {
 			this.handleTopDragLeaveCapture as EventListener,
 			true,
 		)
-		target.removeEventListener('dragover', this
-			.handleTopDragOver as EventListener)
+		target.removeEventListener(
+			'dragover',
+			this.handleTopDragOver as EventListener,
+		)
 		target.removeEventListener('dragover', this.handleTopDragOverCapture, true)
 		target.removeEventListener('drop', this.handleTopDrop as EventListener)
 		target.removeEventListener(
@@ -348,6 +356,7 @@ export default class HTML5Backend implements Backend {
 	}
 
 	private handleDragStart(e: DragEvent, sourceId: string) {
+		console.log('gizim handleDragStart', { e, sourceId })
 		if (e.defaultPrevented) {
 			return
 		}
